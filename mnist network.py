@@ -5,7 +5,7 @@ from keras.utils import np_utils
 from Dense import Dense
 from Activations import Tanh
 from Losses import mse, mse_prime
-from network import train, predict
+from Network import train, predict
 
 def preprocess_data(x, y, limit):
     x = x.reshape(x.shape[0], 28 * 28, 1)
@@ -16,8 +16,8 @@ def preprocess_data(x, y, limit):
     return x[:limit], y[:limit]
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
-(x_train, y_train) = preprocess_data(x_train, y_train, 1000)
-(x_test, y_test) = preprocess_data(x_test, y_test, 20)
+(x_train, y_train) = preprocess_data(x_train, y_train, 10000)
+(x_test, y_test) = preprocess_data(x_test, y_test, 100)
 
 network = [
     Dense(28 * 28, 40),
