@@ -28,6 +28,16 @@ network = [
 
 train(network, mse, mse_prime, x_train, y_train, epochs=100, learning_rate=0.01)
 
+guessed_correctly = 0
+total = 0
+
 for x, y in zip(x_test, y_test):
     output = predict(network, x)
-    print('pred:', np.argmax(output), '\\ttrue:', np.argmax(y))
+    prediction = np.argmax(output)
+    actual = np.argmax(y)
+    if prediction == actual:
+        guessed_correctly += 1
+    total += 1
+    print('pred:', np.argmax(output), '\ttrue:', np.argmax(y))
+
+print('total accuracy: ', guessed_correctly, '/', total)
